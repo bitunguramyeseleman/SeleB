@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, FileText } from 'lucide-react';
+import {
+  ExternalLink,
+  Github,
+  FileText,
+  ArrowRight,
+} from 'lucide-react';
 
 type Project = {
   title: string;
@@ -15,8 +20,10 @@ type Project = {
 const projects: Project[] = [
   {
     title: 'TaskFlow — Project Manager',
-    description: 'A real-time team collaboration platform with kanban boards, chat, and analytics dashboards.',
-    image: 'https://d64gsuwffb70l.cloudfront.net/6a05c160b8bb77127ea56993_1778762225851_a9bb0da5.png',
+    description:
+      'A real-time team collaboration platform with kanban boards, chat, and analytics dashboards.',
+    image:
+      'https://d64gsuwffb70l.cloudfront.net/6a05c160b8bb77127ea56993_1778762225851_a9bb0da5.png',
     tags: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
     category: 'Full-Stack',
     live: 'https://example.com',
@@ -25,8 +32,10 @@ const projects: Project[] = [
   },
   {
     title: 'ShopHub — E-commerce',
-    description: 'Full-featured e-commerce store with Stripe payments, admin dashboard, and product analytics.',
-    image: 'https://d64gsuwffb70l.cloudfront.net/6a05c160b8bb77127ea56993_1778762227040_7ee39b4a.png',
+    description:
+      'Full-featured e-commerce store with Stripe payments, admin dashboard, and product analytics.',
+    image:
+      'https://d64gsuwffb70l.cloudfront.net/6a05c160b8bb77127ea56993_1778762227040_7ee39b4a.png',
     tags: ['Next.js', 'TypeScript', 'Stripe', 'Tailwind'],
     category: 'Web Apps',
     live: 'https://example.com',
@@ -34,89 +43,71 @@ const projects: Project[] = [
   },
   {
     title: 'FitTrack — Fitness App',
-    description: 'Cross-platform mobile app to track workouts, nutrition, and progress with custom plans.',
-    image: 'https://d64gsuwffb70l.cloudfront.net/6a05c160b8bb77127ea56993_1778762272179_ac5edbf9.png',
+    description:
+      'Cross-platform mobile app to track workouts, nutrition, and progress with custom plans.',
+    image:
+      'https://d64gsuwffb70l.cloudfront.net/6a05c160b8bb77127ea56993_1778762272179_ac5edbf9.png',
     tags: ['React Native', 'Firebase', 'Expo'],
     category: 'Mobile',
     live: 'https://example.com',
     github: 'https://github.com',
   },
-  {
-    title: 'EduPortal — Learning Platform',
-    description: 'Online learning platform with video courses, quizzes, certificates, and instructor dashboard.',
-    image: 'https://d64gsuwffb70l.cloudfront.net/6a05c160b8bb77127ea56993_1778762229461_343f74a5.png',
-    tags: ['Laravel', 'React', 'MySQL', 'AWS'],
-    category: 'Full-Stack',
-    live: 'https://example.com',
-    github: 'https://github.com',
-    form: 'https://forms.google.com',
-  },
-  {
-    title: 'WeatherNow Mobile',
-    description: 'Beautiful weather app with hourly forecasts, radar maps, and location-based alerts.',
-    image: 'https://d64gsuwffb70l.cloudfront.net/6a05c160b8bb77127ea56993_1778762253107_0ad3ccab.jpg',
-    tags: ['Flutter', 'Dart', 'OpenWeather API'],
-    category: 'Mobile',
-    live: 'https://example.com',
-    github: 'https://github.com',
-  },
-  {
-    title: 'DevBlog — Markdown CMS',
-    description: 'A developer-friendly blogging platform with markdown support, SEO, and dark mode.',
-    image: 'https://d64gsuwffb70l.cloudfront.net/6a05c160b8bb77127ea56993_1778762213179_d14a8192.png',
-    tags: ['Next.js', 'MDX', 'Tailwind', 'Vercel'],
-    category: 'Web Apps',
-    live: 'https://example.com',
-    github: 'https://github.com',
-  },
-  {
-    title: 'FinanceAI — Budget Tracker',
-    description: 'Smart personal finance app with AI-powered spending insights and savings goals.',
-    image: 'https://d64gsuwffb70l.cloudfront.net/6a05c160b8bb77127ea56993_1778762212113_3749100a.jpg',
-    tags: ['React', 'Python', 'FastAPI', 'PostgreSQL'],
-    category: 'Full-Stack',
-    live: 'https://example.com',
-    github: 'https://github.com',
-  },
-  {
-    title: 'PortfolioPro Template',
-    description: 'A modern, customizable portfolio template open-sourced for developers worldwide.',
-    image: 'https://d64gsuwffb70l.cloudfront.net/6a05c160b8bb77127ea56993_1778762212461_d5ce8dc5.jpg',
-    tags: ['React', 'TypeScript', 'Tailwind', 'Framer Motion'],
-    category: 'Web Apps',
-    live: 'https://example.com',
-    github: 'https://github.com',
-  },
 ];
 
-const filters: Array<'All' | 'Web Apps' | 'Mobile' | 'Full-Stack'> = ['All', 'Web Apps', 'Mobile', 'Full-Stack'];
+const filters: Array<
+  'All' | 'Web Apps' | 'Mobile' | 'Full-Stack'
+> = ['All', 'Web Apps', 'Mobile', 'Full-Stack'];
 
 const Projects: React.FC = () => {
-  const [active, setActive] = useState<typeof filters[number]>('All');
-  const visible = active === 'All' ? projects : projects.filter((p) => p.category === active);
+  const [active, setActive] =
+    useState<typeof filters[number]>('All');
+
+  const visible =
+    active === 'All'
+      ? projects
+      : projects.filter((p) => p.category === active);
 
   return (
-    <section id="projects" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <span className="text-sm font-bold text-yellow-600 uppercase tracking-[0.2em]">Portfolio</span>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mt-2">Selected Works</h2>
-          <div className="w-20 h-1.5 bg-gradient-to-r from-yellow-400 to-amber-600 mx-auto mt-4 rounded-full" />
-          <p className="text-slate-600 mt-6 max-w-2xl mx-auto text-lg leading-relaxed">
-            A showcase of digital products I've engineered — ranging from scalable web ecosystems to native mobile experiences.
+    <section
+      id="projects"
+      className="relative overflow-hidden bg-[#0B0B0B] py-28 text-white"
+    >
+      {/* Background Glow */}
+      <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-yellow-500/10 blur-[120px]" />
+      <div className="absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full bg-amber-500/10 blur-[120px]" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
+        {/* Heading */}
+        <div className="mb-20 text-center">
+          <span className="inline-block rounded-full border border-yellow-500/20 bg-yellow-500/10 px-5 py-2 text-xs font-bold uppercase tracking-[0.3em] text-yellow-400 backdrop-blur-xl">
+            Featured Projects
+          </span>
+
+          <h2 className="mt-6 text-5xl font-black leading-tight md:text-7xl">
+            Premium Digital
+            <span className="bg-gradient-to-r from-yellow-300 via-yellow-500 to-amber-600 bg-clip-text text-transparent">
+              {' '}
+              Experiences
+            </span>
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-400">
+            A collection of modern applications crafted with
+            performance, scalability, and exceptional user
+            experience in mind.
           </p>
         </div>
 
-        {/* Filter Navigation */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        {/* Filters */}
+        <div className="mb-16 flex flex-wrap justify-center gap-4">
           {filters.map((f) => (
             <button
               key={f}
               onClick={() => setActive(f)}
-              className={`px-6 py-2.5 rounded-xl font-bold text-sm transition-all tracking-tight ${
+              className={`rounded-2xl px-6 py-3 text-sm font-bold transition-all duration-300 ${
                 active === f
-                  ? 'bg-yellow-500 text-slate-950 shadow-[0_10px_20px_rgba(234,179,8,0.3)] scale-105'
-                  : 'bg-slate-50 text-slate-600 border border-slate-200 hover:border-yellow-400 hover:text-yellow-600'
+                  ? 'bg-gradient-to-r from-yellow-400 to-amber-500 text-black shadow-[0_10px_40px_rgba(250,204,21,0.35)]'
+                  : 'border border-white/10 bg-white/5 text-slate-300 backdrop-blur-xl hover:border-yellow-500/40 hover:bg-yellow-500/10 hover:text-yellow-300'
               }`}
             >
               {f}
@@ -125,60 +116,100 @@ const Projects: React.FC = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-3">
           {visible.map((p) => (
-            <div key={p.title} className="group bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-2">
-              <div className="relative overflow-hidden aspect-video bg-slate-900">
-                <img 
-                  src={p.image} 
-                  alt={p.title} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" 
+            <div
+              key={p.title}
+              className="group relative overflow-hidden rounded-[30px] border border-white/10 bg-gradient-to-b from-white/[0.07] to-white/[0.03] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-3 hover:border-yellow-500/30"
+            >
+              {/* Image */}
+              <div className="relative overflow-hidden">
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  className="h-72 w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                
-                {/* Overlay on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-8 gap-4">
-                  <a href={p.live} target="_blank" rel="noopener noreferrer" className="p-3.5 bg-yellow-500 rounded-full hover:bg-yellow-400 hover:scale-110 transition-all shadow-xl" title="Live demo">
-                    <ExternalLink className="w-5 h-5 text-slate-950" />
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80" />
+
+                {/* Category Badge */}
+                <div className="absolute left-5 top-5 rounded-full border border-yellow-500/20 bg-black/50 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-yellow-300 backdrop-blur-md">
+                  {p.category}
+                </div>
+
+                {/* Floating Buttons */}
+                <div className="absolute bottom-5 right-5 flex gap-3 opacity-0 transition-all duration-500 group-hover:opacity-100">
+                  <a
+                    href={p.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full bg-yellow-400 p-4 text-black shadow-2xl transition hover:scale-110"
+                  >
+                    <ExternalLink className="h-5 w-5" />
                   </a>
-                  <a href={p.github} target="_blank" rel="noopener noreferrer" className="p-3.5 bg-white rounded-full hover:scale-110 transition-all shadow-xl" title="GitHub">
-                    <Github className="w-5 h-5 text-slate-950" />
+
+                  <a
+                    href={p.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full bg-white p-4 text-black shadow-2xl transition hover:scale-110"
+                  >
+                    <Github className="h-5 w-5" />
                   </a>
                 </div>
-                <span className="absolute top-4 left-4 px-3 py-1 bg-slate-950/80 backdrop-blur-md text-[10px] font-black text-yellow-400 uppercase tracking-widest rounded-lg border border-yellow-500/20">
-                  {p.category}
-                </span>
               </div>
 
+              {/* Content */}
               <div className="p-8">
-                <h3 className="text-xl font-black text-slate-900 mb-3 group-hover:text-yellow-600 transition-colors">{p.title}</h3>
-                <p className="text-slate-500 text-sm mb-6 leading-relaxed line-clamp-2">{p.description}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {p.tags.map((t) => (
-                    <span key={t} className="px-3 py-1 bg-amber-50 text-amber-700 text-[10px] font-bold uppercase tracking-tighter rounded-full border border-amber-100">
-                      {t}
+                <h3 className="text-2xl font-black leading-tight text-white transition-colors duration-300 group-hover:text-yellow-300">
+                  {p.title}
+                </h3>
+
+                <p className="mt-4 leading-relaxed text-slate-400">
+                  {p.description}
+                </p>
+
+                {/* Tags */}
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {p.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-yellow-500/10 bg-yellow-500/10 px-4 py-2 text-xs font-semibold text-yellow-200"
+                    >
+                      {tag}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex gap-3 pt-5 border-t border-slate-50">
-                  <a 
-                    href={p.live} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-950 text-white text-xs font-black rounded-xl hover:bg-yellow-500 hover:text-slate-950 transition-all active:scale-95"
+                {/* Footer */}
+                <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-6">
+                  <a
+                    href={p.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-bold text-yellow-300 transition-all duration-300 hover:gap-4"
                   >
-                    <ExternalLink className="w-4 h-4" /> LIVE DEMO
+                    View Project
+                    <ArrowRight className="h-4 w-4" />
                   </a>
-                  <a 
-                    href={p.github} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="inline-flex items-center justify-center px-4 py-2.5 border-2 border-slate-100 text-slate-900 text-xs font-black rounded-xl hover:border-yellow-500 hover:text-yellow-600 transition-all"
-                  >
-                    <Github className="w-4 h-4" /> CODE
-                  </a>
+
+                  {p.form && (
+                    <a
+                      href={p.form}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-xl border border-yellow-500/20 bg-yellow-500/10 p-3 text-yellow-300 transition hover:bg-yellow-500/20"
+                    >
+                      <FileText className="h-5 w-5" />
+                    </a>
+                  )}
                 </div>
+              </div>
+
+              {/* Glow Hover */}
+              <div className="absolute inset-0 -z-10 opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-100">
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-amber-500/20" />
               </div>
             </div>
           ))}
